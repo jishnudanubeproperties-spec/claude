@@ -209,6 +209,18 @@ a{text-decoration:none;color:inherit}
   border:1.5px solid #3ddc84;border-radius:20px;
   padding:2px 10px;background:#fff;
 }
+.tabby-mini{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#f0fdf4;border:1.5px solid #3ddc84;border-radius:8px;
+  padding:6px 12px;margin-top:10px;flex-wrap:wrap;
+}
+.tabby-mini-logo{
+  background:#3ddc84;border-radius:4px;padding:1px 7px;
+  font-size:12px;font-weight:900;color:#1a1a1a;letter-spacing:-.02em;
+}
+.tabby-mini-text{
+  font-size:12px;color:#1a5c38;font-weight:700;
+}
 
 /* ═════════════════════════════════════════
    DOCTOR SECTION
@@ -1012,7 +1024,11 @@ a{text-decoration:none;color:inherit}
         </ul>
         <div class="pkg-price-main">Starting from <span>AED 1,150</span></div>
         <div class="pkg-orig">Individual Value: AED 2,300 – AED 6,900</div>
-        <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Inquire Now →</button>
+        <div class="tabby-mini">
+          <span class="tabby-mini-logo">ŧabby</span>
+          <span class="tabby-mini-text">From AED 287.50/mo × 4 · No interest · No fees</span>
+        </div>
+        <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" style="margin-top:20px">Inquire Now →</button>
       </div>
     </div>
   </div>
@@ -1179,6 +1195,10 @@ a{text-decoration:none;color:inherit}
                 <div class="pkg-check"></div>
                 <div class="pkg-name">💎 Single Session — Lift &amp; Glow</div>
                 <div class="pkg-price-lf">AED 1,150<span class="pkg-old">AED 2,300</span></div>
+                <div class="tabby-mini" style="margin-top:6px">
+                  <span class="tabby-mini-logo">ŧabby</span>
+                  <span class="tabby-mini-text">AED 287.50/mo × 4 · No interest</span>
+                </div>
                 <div class="pkg-desc">1 session · 3-Layer Cellular Injection · Consultation &amp; skin analysis included</div>
               </label>
               <label class="pkg-card" id="lpkg-1">
@@ -1186,6 +1206,10 @@ a{text-decoration:none;color:inherit}
                 <div class="pkg-check"></div>
                 <div class="pkg-name">✨ 3-Month Collagen Restoration Program</div>
                 <div class="pkg-price-lf">AED 3,000<span class="pkg-old">AED 6,900</span></div>
+                <div class="tabby-mini" style="margin-top:6px">
+                  <span class="tabby-mini-logo">ŧabby</span>
+                  <span class="tabby-mini-text">AED 750/mo × 4 · No interest</span>
+                </div>
                 <div class="pkg-desc">3 sessions · Deep collagen rebuilding · Save AED 3,900 · Best long-term results</div>
               </label>
               <label class="pkg-card" id="lpkg-2">
