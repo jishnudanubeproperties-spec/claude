@@ -185,11 +185,29 @@ a{text-decoration:none;color:inherit}
   border-left:3px solid var(--teal);padding-left:14px;margin-top:18px;
 }
 .tabby-row{
-  font-size:13px;color:#666;margin-top:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-top:16px;
 }
-.tabby-badge{
-  display:inline-block;background:#c8f97c;color:#222;
-  font-weight:800;font-size:11px;padding:3px 9px;border-radius:4px;
+.tabby-card{
+  display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:#f0fdf4;border:1.5px solid #3ddc84;border-radius:10px;
+  padding:12px 16px;
+}
+.tabby-logo{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#3ddc84;border-radius:6px;padding:3px 10px;
+  font-size:15px;font-weight:900;color:#1a1a1a;letter-spacing:-.02em;
+  font-family:'Open Sans',sans-serif;
+}
+.tabby-logo span{color:#1a1a1a;font-style:normal}
+.tabby-split{
+  font-size:13px;color:#222;font-weight:600;line-height:1.4;
+}
+.tabby-split strong{color:#1a5c38;font-size:15px;font-weight:800}
+.tabby-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.tabby-pill{
+  font-size:11px;font-weight:700;color:#1a5c38;
+  border:1.5px solid #3ddc84;border-radius:20px;
+  padding:2px 10px;background:#fff;
 }
 
 /* ═════════════════════════════════════════
@@ -837,7 +855,19 @@ a{text-decoration:none;color:inherit}
         <div class="price-line">AED 1,150 <span class="discount">(50% off)</span></div>
         <div class="orig-price">Single Session Original Price: AED 2,300</div>
         <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book a Free Consultation →</button>
-        <div class="tabby-row">Pay in 3 interest-free instalments with <span class="tabby-badge">tabby</span></div>
+        <div class="tabby-row">
+          <div class="tabby-card">
+            <div class="tabby-logo">ŧabby</div>
+            <div class="tabby-split">
+              <strong>AED 287.50 / month</strong> × 4 payments<br>
+              <div class="tabby-pills">
+                <span class="tabby-pill">4 payments</span>
+                <span class="tabby-pill">No interest</span>
+                <span class="tabby-pill">No fees</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <p class="italic-note">"The most beautiful results happen when we rebuild collagen naturally and restore the skin from within." — Dr. Reza Orouji</p>
       </div>
       <div class="hero-img-wrap">
