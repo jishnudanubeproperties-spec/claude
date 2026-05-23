@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Broker Event Registration | Paramy Polyclinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #0a0a0a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #b89c6e;
+      border: 1px solid #b89c6e44;
+      border-radius: 40px;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 600;
+      color: #f0ece4;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13.5px;
+      color: #888;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #2a2a2a, transparent);
+      margin-bottom: 32px;
+    }
+
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #b89c6e;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      color: #f0ece4;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type="text"]::placeholder { color: #444; }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: #b89c6e;
+      box-shadow: 0 0 0 3px rgba(184,156,110,0.12);
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #b89c6e;
+      pointer-events: none;
+    }
+
+    select option { background: #1a1a1a; color: #f0ece4; }
+
+    /* Dynamic client name fields */
+    #client-fields {
+      overflow: hidden;
+    }
+
+    .client-field {
+      margin-bottom: 14px;
+      animation: slideIn 0.3s ease forwards;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .client-field:nth-child(1) { animation-delay: 0.05s; }
+    .client-field:nth-child(2) { animation-delay: 0.10s; }
+    .client-field:nth-child(3) { animation-delay: 0.15s; }
+    .client-field:nth-child(4) { animation-delay: 0.20s; }
+    .client-field:nth-child(5) { animation-delay: 0.25s; }
+
+    .client-field label {
+      color: #888;
+      letter-spacing: 1px;
+    }
+
+    .invitees-section {
+      background: #161616;
+      border: 1px solid #242424;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+
+    .invitees-section > .field-group { margin-bottom: 0; }
+
+    #client-names-wrapper {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #242424;
+    }
+
+    #client-names-wrapper.hidden { display: none; }
+
+    .names-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #b89c6e, #d4b483);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0a0a0a;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* Success state */
+    .success-overlay {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-overlay.show { display: block; }
+    .success-overlay .check {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .success-overlay h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #f0ece4;
+      margin-bottom: 8px;
+    }
+    .success-overlay p { font-size: 13.5px; color: #888; }
+
+    @media (max-width: 480px) {
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Success message (hidden by default) -->
+  <div class="success-overlay" id="success">
+    <div class="check">✦</div>
+    <h2>Registration Complete</h2>
+    <p>We look forward to welcoming you and your clients.</p>
+  </div>
+
+  <!-- Form -->
+  <form id="leadForm" novalidate>
+    <div class="badge">Exclusive Broker Event</div>
+    <h1>Reserve Your Seats</h1>
+    <p class="subtitle">Complete the form below to secure your invitation and your clients' spots at our upcoming event.</p>
+    <div class="divider"></div>
+
+    <!-- Brokerage Firm -->
+    <div class="field-group">
+      <label for="firmName">Name of the Brokerage Firm</label>
+      <input
+        type="text"
+        id="firmName"
+        name="firmName"
+        placeholder="e.g. Emaar Properties, DAMAC, …"
+        required
+      />
+    </div>
+
+    <!-- Invitees section -->
+    <div class="invitees-section">
+      <div class="field-group">
+        <label for="numInvitees">Number of Invitees</label>
+        <div class="select-wrapper">
+          <select id="numInvitees" name="numInvitees" required>
+            <option value="" disabled selected>Select 1 – 5</option>
+            <option value="1">1 Client</option>
+            <option value="2">2 Clients</option>
+            <option value="3">3 Clients</option>
+            <option value="4">4 Clients</option>
+            <option value="5">5 Clients</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic client name fields -->
+      <div id="client-names-wrapper" class="hidden">
+        <div class="names-label">Client Names</div>
+        <div id="client-fields"></div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Confirm Registration</button>
+  </form>
+
+</div>
+
+<script>
+  const select = document.getElementById('numInvitees');
+  const wrapper = document.getElementById('client-names-wrapper');
+  const fieldsContainer = document.getElementById('client-fields');
+
+  select.addEventListener('change', function () {
+    const count = parseInt(this.value, 10);
+
+    // Clear existing fields
+    fieldsContainer.innerHTML = '';
+
+    if (!count) {
+      wrapper.classList.add('hidden');
+      return;
+    }
+
+    wrapper.classList.remove('hidden');
+
+    for (let i = 1; i <= count; i++) {
+      const div = document.createElement('div');
+      div.className = 'client-field';
+
+      const lbl = document.createElement('label');
+      lbl.setAttribute('for', `client${i}`);
+      lbl.textContent = `Client Name ${i}`;
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.id = `client${i}`;
+      inp.name = `client${i}`;
+      inp.placeholder = `Full name of client ${i}`;
+      inp.required = true;
+
+      div.appendChild(lbl);
+      div.appendChild(inp);
+      fieldsContainer.appendChild(div);
+    }
+  });
+
+  document.getElementById('leadForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Basic validation
+    const firm = document.getElementById('firmName').value.trim();
+    const num = select.value;
+
+    if (!firm || !num) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const clientInputs = fieldsContainer.querySelectorAll('input[type="text"]');
+    for (const inp of clientInputs) {
+      if (!inp.value.trim()) {
+        inp.focus();
+        alert('Please enter all client names.');
+        return;
+      }
+    }
+
+    // Collect data
+    const data = { firm, invitees: parseInt(num), clients: [] };
+    clientInputs.forEach(inp => data.clients.push(inp.value.trim()));
+
+    console.log('Form submitted:', data);
+
+    // Show success
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('success').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
