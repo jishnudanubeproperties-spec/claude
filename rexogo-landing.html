@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rexogo – Das CRM für Energie- und Versicherungsberater. Alle Kontakte, Nachfass-Termine und Anfragen an einem Ort. 14 Tage kostenlos testen.">
+    <meta name="robots" content="index, follow">
+    <title>Rexogo – CRM für Energie- &amp; Versicherungsberater</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rexogo – Mehr Abschlüsse, weniger Verwaltungschaos">
+    <meta property="og:description" content="Das CRM speziell für Energie- und Versicherungsberater. 14 Tage kostenlos testen – kein Risiko.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue:        #1A52CC;
+            --blue-dark:   #1440A8;
+            --blue-light:  #EEF3FF;
+            --blue-mid:    #BFDBFE;
+            --text:        #0F172A;
+            --text-mid:    #334155;
+            --text-soft:   #64748B;
+            --border:      #E2E8F0;
+            --bg:          #F8FAFC;
+            --white:       #FFFFFF;
+            --green:       #059669;
+            --green-bg:    #D1FAE5;
+            --amber-bg:    #FEF3C7;
+            --radius:      12px;
+            --shadow:      0 4px 16px rgba(0,0,0,.09);
+            --shadow-lg:   0 16px 48px rgba(0,0,0,.12);
+            --font:        'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── Layout ── */
+        .wrap  { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue);
+            color: var(--white);
+            font-family: var(--font);
+            font-size: 17px;
+            font-weight: 600;
+            padding: 16px 32px;
+            min-height: 54px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(26,82,204,.30);
+            transition: background .18s, transform .12s, box-shadow .18s;
+        }
+        .btn:hover  { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(26,82,204,.38); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,.18);
+        }
+        .btn-white:hover { background: #F0F5FF; }
+
+        .btn-sm {
+            font-size: 14px;
+            padding: 10px 20px;
+            min-height: 40px;
+        }
+
+        .microtext {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--text-soft);
+            text-align: center;
+        }
+        .microtext-white { color: rgba(255,255,255,.72); }
+
+        /* ── Sticky mobile CTA ── */
+        #sticky {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 200;
+            background: var(--white);
+            padding: 12px 20px 20px;
+            border-top: 1px solid var(--border);
+            box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+        }
+        #sticky .btn { width: 100%; font-size: 16px; }
+
+        @media (max-width: 768px) {
+            body { padding-bottom: 96px; }
+        }
+
+        /* ── Header ── */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--blue);
+            text-decoration: none;
+            letter-spacing: -0.04em;
+        }
+        @media (max-width: 768px) { .header-btn { display: none; } }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 72px 0 80px;
+            background: linear-gradient(175deg, #EEF3FF 0%, var(--white) 55%);
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--blue);
+            flex-shrink: 0;
+        }
+        .hero h1 {
+            font-size: clamp(34px, 4.2vw, 54px);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 22px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--blue);
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--text-mid);
+            margin-bottom: 36px;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+        .hero-cta-wrap { margin-bottom: 8px; }
+        .how-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 18px;
+            color: var(--text-soft);
+            font-size: 14px;
+            text-decoration: none;
+            transition: color .15s;
+        }
+        .how-link:hover { color: var(--blue); }
+
+        /* Trust row */
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-soft);
+        }
+        .trust-item svg { width: 15px; height: 15px; color: var(--green); flex-shrink: 0; }
+
+        /* Dashboard mockup */
+        .hero-visual { position: relative; }
+
+        .mockup {
+            background: #1E293B;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.08);
+        }
+        .mockup-dots { display: flex; gap: 6px; margin-bottom: 10px; }
+        .mockup-dots span { width: 10px; height: 10px; border-radius: 50%; }
+        .mockup-dots span:nth-child(1) { background: #FF5F57; }
+        .mockup-dots span:nth-child(2) { background: #FEBC2E; }
+        .mockup-dots span:nth-child(3) { background: #28C840; }
+
+        .mockup-screen {
+            background: var(--bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Inside dashboard */
+        .dash-bar {
+            background: var(--white);
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dash-logo-text { font-weight: 800; font-size: 13px; color: var(--blue); }
+        .dash-nav-pills { display: flex; gap: 12px; }
+        .pill { height: 8px; border-radius: 4px; background: var(--border); }
+        .pill.active { background: var(--blue); width: 44px; }
+        .pill:not(.active) { width: 32px; }
+
+        .dash-layout { display: grid; grid-template-columns: 128px 1fr; min-height: 230px; }
+
+        .dash-side {
+            background: #F1F5F9;
+            padding: 14px 12px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .side-row { height: 9px; border-radius: 5px; background: #CBD5E1; }
+        .side-row.act { background: var(--blue); width: 78%; }
+        .side-row:nth-child(2) { width: 88%; }
+        .side-row:nth-child(3) { width: 65%; }
+        .side-row:nth-child(4) { width: 72%; }
+        .side-row:nth-child(5) { width: 55%; }
+
+        .dash-main { padding: 12px; }
+
+        .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+        .kpi {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 8px 10px;
+        }
+        .kpi-val { font-size: 18px; font-weight: 700; color: var(--blue); }
+        .kpi-lbl { height: 6px; background: var(--border); border-radius: 3px; margin-top: 5px; width: 70%; }
+
+        .data-table {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .dt-head {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            padding: 8px 10px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        .dt-head-cell { height: 7px; background: #CBD5E1; border-radius: 3px; }
+        .dt-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            padding: 8px 10px;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .dt-row:last-child { border-bottom: none; }
+        .dt-cell { height: 7px; background: var(--border); border-radius: 3px; }
+        .dt-cell.name { background: #CBD5E1; }
+        .badge { height: 18px; border-radius: 9px; width: 64%; }
+        .badge.g { background: var(--green-bg); }
+        .badge.a { background: var(--amber-bg); }
+        .badge.b { background: var(--blue-light); }
+
+        /* Mobile mockup overlay */
+        .mockup-phone {
+            position: absolute;
+            bottom: -20px;
+            right: -22px;
+            width: 96px;
+            background: #1E293B;
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: var(--shadow-lg);
+        }
+        .phone-screen {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 8px;
+            min-height: 138px;
+        }
+        .phone-top { height: 8px; background: var(--blue); border-radius: 4px; margin: 0 auto 10px; width: 56%; }
+        .p-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 6px 7px;
+            margin-bottom: 5px;
+        }
+        .p-line { height: 5px; background: var(--border); border-radius: 3px; margin-bottom: 4px; }
+        .p-line.s { width: 58%; background: #CBD5E1; }
+        .p-dot { width: 12px; height: 12px; border-radius: 50%; float: right; margin-top: -16px; }
+
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+            .hero { padding: 48px 0 56px; }
+            .mockup-phone { width: 78px; right: -12px; bottom: -12px; }
+        }
+
+        /* ── Sections ── */
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--bg); }
+
+        .sec-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .09em;
+            color: var(--blue);
+            margin-bottom: 10px;
+        }
+        .sec-title {
+            font-size: clamp(26px, 3vw, 40px);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .sec-sub {
+            font-size: 17px;
+            color: var(--text-mid);
+            line-height: 1.65;
+            max-width: 560px;
+        }
+        .sec-hd { margin-bottom: 56px; }
+        .sec-hd-center { text-align: center; }
+        .sec-hd-center .sec-sub { margin: 0 auto; }
+
+        /* ── Problem ── */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 24px;
+        }
+        .problem-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+        }
+        .p-icon {
+            width: 44px; height: 44px;
+            background: #FEF2F2;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .problem-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .problem-card p  { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+        @media (max-width: 768px) { .problem-grid { grid-template-columns: 1fr; } }
+
+        /* ── Features ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 28px;
+        }
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: border-color .18s, box-shadow .18s;
+        }
+        .feature-card:hover {
+            border-color: var(--blue-mid);
+            box-shadow: 0 8px 28px rgba(26,82,204,.09);
+        }
+        .f-icon {
+            width: 48px; height: 48px;
+            background: var(--blue-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .feature-card p  { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+        @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } }
+
+        /* ── Why ── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 36px 40px;
+        }
+        .why-item { display: flex; gap: 16px; }
+        .w-icon {
+            width: 48px; height: 48px;
+            background: var(--blue-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .why-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 7px; }
+        .why-item p  { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+        /* Comparison */
+        .comparison-wrap { margin-top: 60px; }
+        .comparison-label {
+            font-size: 17px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,.07);
+        }
+        .comp-table th {
+            padding: 13px 18px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
+        }
+        .comp-table th:first-child { text-align: left; }
+        .comp-table th.hl { background: var(--blue); color: var(--white); }
+        .comp-table td {
+            padding: 12px 18px;
+            font-size: 14px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-mid);
+            background: var(--white);
+        }
+        .comp-table td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+        .comp-table tr:last-child td { border-bottom: none; }
+        .ok   { color: var(--green); font-weight: 600; }
+        .no   { color: #EF4444; }
+        .part { color: #D97706; }
+
+        @media (max-width: 768px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .comp-table th, .comp-table td { padding: 9px 10px; font-size: 13px; }
+        }
+
+        /* ── Steps ── */
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 32px;
+            position: relative;
+        }
+        .steps-row::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: calc(16.66% + 24px);
+            right: calc(16.66% + 24px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+        }
+        .step { text-align: center; }
+        .step-num {
+            width: 56px; height: 56px;
+            background: var(--blue);
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            position: relative; z-index: 1;
+        }
+        .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .step p  { font-size: 15px; color: var(--text-mid); }
+
+        @media (max-width: 768px) {
+            .steps-row { grid-template-columns: 1fr; gap: 24px; }
+            .steps-row::before { display: none; }
+        }
+
+        /* ── FAQ ── */
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-q {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 22px 0;
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color .15s;
+        }
+        .faq-q:hover { color: var(--blue); }
+        .faq-chevron {
+            width: 20px; height: 20px;
+            flex-shrink: 0;
+            color: var(--text-soft);
+            transition: transform .2s, color .15s;
+        }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--blue); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, padding .3s ease;
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+        .faq-item.open .faq-a {
+            max-height: 200px;
+            padding-bottom: 22px;
+        }
+
+        /* ── Final CTA ── */
+        .final-cta {
+            background: linear-gradient(135deg, #1A52CC 0%, #0F3A9E 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .final-cta h2 {
+            font-size: clamp(28px, 3.5vw, 46px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .final-cta .lead {
+            font-size: 18px;
+            opacity: .85;
+            margin: 0 auto 40px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .final-trust {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .final-trust span {
+            font-size: 14px;
+            opacity: .78;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 36px 0 32px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo { font-size: 18px; font-weight: 800; color: var(--white); text-decoration: none; }
+        .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-size: 14px; transition: color .15s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-copy {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #1E293B;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sticky mobile CTA -->
+<div id="sticky">
+    <a href="https://buy.stripe.com/aFaeVde0H64u2qFd5g2wU0d" target="_blank" rel="noopener" class="btn">
+        14 Tage kostenlos testen
+    </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════ -->
+<header class="site-header">
+    <div class="wrap">
+        <div class="header-inner">
+            <a href="#" class="logo">rexogo</a>
+            <a href="https://buy.stripe.com/aFaeVde0H64u2qFd5g2wU0d"
+               target="_blank" rel="noopener"
+               class="btn btn-sm header-btn">
+                14 Tage kostenlos testen
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     1. HERO
+═══════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+    <div class="wrap">
+        <div class="hero-inner">
+
+            <!-- Copy -->
+            <div>
+                <div class="hero-badge">Für Energie- &amp; Versicherungsberater im DACH-Raum</div>
+
+                <h1>Mehr Abschlüsse.<br>Kein <em>Verwaltungschaos</em>.</h1>
+
+                <p class="hero-sub">
+                    Rexogo bringt Ihre Kundenkontakte, Nachfass-Termine und offenen Anfragen
+                    in ein einziges System – damit kein Abschluss mehr durch das Raster fällt.
+                </p>
+
+                <div class="hero-cta-wrap">
+                    <a href="https://buy.stripe.com/aFaeVde0H64u2qFd5g2wU0d"
+                       target="_blank" rel="noopener"
+                       class="btn">
+                        14 Tage kostenlos testen
+                    </a>
+                    <span class="microtext">Keine Kreditkarten-Falle &nbsp;·&nbsp; jederzeit kündbar</span>
+
+                    <a href="#problem" class="how-link">Wie es funktioniert ↓</a>
+                </div>
+
+                <div class="trust-row">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.22 5.03a.75.75 0 00-1.06-1.06L7 8.19 5.78 6.97a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.69-3.75z"/>
+                        </svg>
+                        DSGVO-konform
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.22 5.03a.75.75 0 00-1.06-1.06L7 8.19 5.78 6.97a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.69-3.75z"/>
+                        </svg>
+                        Server in Deutschland
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.22 5.03a.75.75 0 00-1.06-1.06L7 8.19 5.78 6.97a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.69-3.75z"/>
+                        </svg>
+                        Kein technisches Vorwissen nötig
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard mockup -->
+            <div class="hero-visual">
+                <div class="mockup" role="img" aria-label="Rexogo Dashboard-Vorschau">
+                    <div class="mockup-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="mockup-screen">
+                        <div class="dash-bar">
+                            <span class="dash-logo-text">rexogo</span>
+                            <div class="dash-nav-pills">
+                                <div class="pill active"></div>
+                                <div class="pill"></div>
+                                <div class="pill"></div>
+                            </div>
+                        </div>
+                        <div class="dash-layout">
+                            <div class="dash-side">
+                                <div class="side-row act"></div>
+                                <div class="side-row"></div>
+                                <div class="side-row"></div>
+                                <div class="side-row"></div>
+                                <div class="side-row"></div>
+                            </div>
+                            <div class="dash-main">
+                                <div class="kpi-row">
+                                    <div class="kpi"><div class="kpi-val">48</div><div class="kpi-lbl"></div></div>
+                                    <div class="kpi"><div class="kpi-val">12</div><div class="kpi-lbl"></div></div>
+                                    <div class="kpi"><div class="kpi-val">7</div><div class="kpi-lbl"></div></div>
+                                </div>
+                                <div class="data-table">
+                                    <div class="dt-head">
+                                        <div class="dt-head-cell"></div>
+                                        <div class="dt-head-cell"></div>
+                                        <div class="dt-head-cell"></div>
+                                    </div>
+                                    <div class="dt-row"><div class="dt-cell name"></div><div class="dt-cell"></div><div class="badge g"></div></div>
+                                    <div class="dt-row"><div class="dt-cell name"></div><div class="dt-cell"></div><div class="badge a"></div></div>
+                                    <div class="dt-row"><div class="dt-cell name"></div><div class="dt-cell"></div><div class="badge b"></div></div>
+                                    <div class="dt-row"><div class="dt-cell name"></div><div class="dt-cell"></div><div class="badge g"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone overlay -->
+                <div class="mockup-phone" aria-hidden="true">
+                    <div class="phone-screen">
+                        <div class="phone-top"></div>
+                        <div class="p-card">
+                            <div class="p-line"></div>
+                            <div class="p-line s"></div>
+                            <div class="p-dot" style="background:var(--blue-light)"></div>
+                        </div>
+                        <div class="p-card">
+                            <div class="p-line"></div>
+                            <div class="p-line s"></div>
+                            <div class="p-dot" style="background:var(--green-bg)"></div>
+                        </div>
+                        <div class="p-card">
+                            <div class="p-line"></div>
+                            <div class="p-line s"></div>
+                            <div class="p-dot" style="background:var(--amber-bg)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     2. PROBLEM
+═══════════════════════════════════════════════════ -->
+<section class="section section-alt" id="problem">
+    <div class="wrap">
+        <div class="sec-hd wrap-narrow">
+            <div class="sec-label">Das Problem</div>
+            <h2 class="sec-title">Kennen Sie das?</h2>
+            <p class="sec-sub">
+                Die meisten Berater verlieren keine Abschlüsse an die Konkurrenz –
+                sie verlieren sie im Alltagschaos.
+            </p>
+        </div>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="p-icon" aria-hidden="true">📋</div>
+                <h3>Notizen liegen überall verteilt</h3>
+                <p>WhatsApp, Notizbuch, Excel, E-Mail – und wenn Sie den richtigen Eintrag brauchen, finden Sie ihn gerade nicht.</p>
+            </div>
+            <div class="problem-card">
+                <div class="p-icon" aria-hidden="true">⏰</div>
+                <h3>Nachfass-Termine gehen unter</h3>
+                <p>Der Rückruf vom Montag fällt Ihnen erst Donnerstag auf – und der Interessent hat sich längst woanders entschieden.</p>
+            </div>
+            <div class="problem-card">
+                <div class="p-icon" aria-hidden="true">📥</div>
+                <h3>Anfragen bleiben zu lange liegen</h3>
+                <p>Neue Kontakte kommen rein, aber der Überblick fehlt. Wer hat schon ein Angebot? Wer wartet noch auf Rückmeldung?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     3. LÖSUNG – KERNFUNKTIONEN
+═══════════════════════════════════════════════════ -->
+<section class="section" id="funktionen">
+    <div class="wrap">
+        <div class="sec-hd">
+            <div class="sec-label">Die Lösung</div>
+            <h2 class="sec-title">Alles, was Sie täglich brauchen – an einem Ort</h2>
+            <p class="sec-sub">Rexogo ist kein allgemeines Tool, das Sie sich erst zurechtbiegen müssen. Es ist für Energie- und Versicherungsberater gebaut.</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="f-icon" aria-hidden="true">👥</div>
+                <h3>Kein Kontakt geht mehr verloren</h3>
+                <p>Alle Kunden mit Gesprächsverlauf, Vertragsstatus und Dokumenten an einem Ort – egal ob am Desktop oder unterwegs auf dem Smartphone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon" aria-hidden="true">🔔</div>
+                <h3>Kein Nachfass-Termin geht mehr unter</h3>
+                <p>Legen Sie einmal eine Erinnerung fest – Rexogo meldet sich zum richtigen Zeitpunkt. Nie wieder ein vergessener Folgetermin.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon" aria-hidden="true">📊</div>
+                <h3>Immer im Bild: wo steht jede Anfrage?</h3>
+                <p>Von der ersten Kontaktaufnahme bis zur abgeschlossenen Police – die Pipeline-Übersicht zeigt auf einen Blick, was als Nächstes ansteht.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon" aria-hidden="true">📁</div>
+                <h3>Alle Dokumente sofort zur Hand</h3>
+                <p>Angebote, Verträge und Policen direkt beim Kundenkontakt gespeichert. Kein Suchen in E-Mail-Ordnern, kein manuelles Ablegen mehr.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     4. WARUM REXOGO
+═══════════════════════════════════════════════════ -->
+<section class="section section-alt" id="warum-rexogo">
+    <div class="wrap">
+        <div class="sec-hd">
+            <div class="sec-label">Warum Rexogo</div>
+            <h2 class="sec-title">Ein System. Kein Kompromiss.</h2>
+            <p class="sec-sub">Generische CRMs kennen Ihre Branche nicht – und lassen sich zeigen.</p>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="w-icon" aria-hidden="true">🏭</div>
+                <div>
+                    <h3>Speziell für Energie- und Versicherungsberatung entwickelt</h3>
+                    <p>Rexogo bildet die Abläufe Ihrer Branche ab – von der Erstanfrage bis zur Vertragsverlängerung. Kein Tool, das Sie sich erst mühsam anpassen müssen.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="w-icon" aria-hidden="true">🧩</div>
+                <div>
+                    <h3>Alles in einem, statt fünf halbe Lösungen</h3>
+                    <p>CRM, Aufgaben, Dokumente, Erinnerungen – alles an einem Ort. Ein Login, eine monatliche Rechnung, kein Tool-Wirrwarr mehr.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="w-icon" aria-hidden="true">🇩🇪</div>
+                <div>
+                    <h3>DSGVO-konform, Server in Deutschland</h3>
+                    <p>Ihre Kundendaten gehören Ihnen. Alle Daten werden verschlüsselt auf deutschen Servern gespeichert – vollständig DSGVO-konform, ohne Kompromisse.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="w-icon" aria-hidden="true">⚡</div>
+                <div>
+                    <h3>Einsatzbereit in unter 30 Minuten</h3>
+                    <p>Keine wochenlange Einführungsphase, kein IT-Projektteam. Kontakte importieren, fertig. Die meisten Berater sind am ersten Tag produktiv.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison table -->
+        <div class="comparison-wrap">
+            <p class="comparison-label">Rexogo vs. mehrere Einzeltools</p>
+            <div style="overflow-x:auto;">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Was Sie brauchen</th>
+                            <th class="hl">Rexogo</th>
+                            <th>CRM + Aufgaben + Docs + ...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Einrichtungsaufwand</td>
+                            <td><span class="ok">✓ unter 30 Min.</span></td>
+                            <td><span class="part">Stunden bis Tage</span></td>
+                        </tr>
+                        <tr>
+                            <td>Für Energie/Versicherung optimiert</td>
+                            <td><span class="ok">✓ Ja</span></td>
+                            <td><span class="no">✗ Nein</span></td>
+                        </tr>
+                        <tr>
+                            <td>Alles in einer Oberfläche</td>
+                            <td><span class="ok">✓ Ja</span></td>
+                            <td><span class="no">✗ Mehrere Logins</span></td>
+                        </tr>
+                        <tr>
+                            <td>Automatische Nachfass-Erinnerungen</td>
+                            <td><span class="ok">✓ Integriert</span></td>
+                            <td><span class="part">Nur mit Extra-Tool</span></td>
+                        </tr>
+                        <tr>
+                            <td>DSGVO, Serverstandort Deutschland</td>
+                            <td><span class="ok">✓ Standard</span></td>
+                            <td><span class="part">Nicht immer</span></td>
+                        </tr>
+                        <tr>
+                            <td>Monatliche Kosten gesamt</td>
+                            <td><span class="ok">✓ Ein übersichtlicher Preis</span></td>
+                            <td><span class="no">✗ 3–5× teurer (alle Tools zusammen)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     5. SO EINFACH STARTEN SIE
+═══════════════════════════════════════════════════ -->
+<section class="section" id="start">
+    <div class="wrap">
+        <div class="sec-hd sec-hd-center">
+            <div class="sec-label">So einfach starten Sie</div>
+            <h2 class="sec-title">In drei Schritten startklar</h2>
+            <p class="sec-sub">Keine Schulung, kein Techniker – einfach loslegen.</p>
+        </div>
+
+        <div class="steps-row">
+            <div class="step">
+                <div class="step-num" aria-hidden="true">1</div>
+                <h3>Konto anlegen</h3>
+                <p>E-Mail eingeben, Passwort setzen – fertig. Dauert unter 2 Minuten, kein technisches Wissen nötig.</p>
+            </div>
+            <div class="step">
+                <div class="step-num" aria-hidden="true">2</div>
+                <h3>Kontakte importieren</h3>
+                <p>Aus Excel, Ihrer bisherigen Software oder direkt per Hand. Rexogo führt Sie durch den Import.</p>
+            </div>
+            <div class="step">
+                <div class="step-num" aria-hidden="true">3</div>
+                <h3>Loslegen</h3>
+                <p>Ersten Kontakt anlegen, ersten Nachfass-Termin setzen – die meisten Berater sind noch am selben Tag produktiv.</p>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:52px;">
+            <a href="https://buy.stripe.com/aFaeVde0H64u2qFd5g2wU0d"
+               target="_blank" rel="noopener"
+               class="btn">
+                14 Tage kostenlos testen
+            </a>
+            <span class="microtext">Keine Kreditkarten-Falle &nbsp;·&nbsp; jederzeit kündbar</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     6. FAQ
+═══════════════════════════════════════════════════ -->
+<section class="section section-alt" id="faq">
+    <div class="wrap">
+        <div class="sec-hd sec-hd-center">
+            <div class="sec-label">Häufige Fragen</div>
+            <h2 class="sec-title">Was Sie vielleicht noch wissen möchten</h2>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq1">
+                    Was kostet Rexogo nach den 14 Testtagen?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq1" role="region">
+                    Nach dem Testzeitraum entscheiden Sie in Ruhe, ob Sie weitermachen möchten. Die genauen Konditionen sehen Sie direkt beim Registrieren. Es gibt keine automatische Abbuchung ohne Ihre Zustimmung und keine versteckten Gebühren.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq2">
+                    Wie kündige ich, wenn Rexogo doch nicht zu mir passt?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq2" role="region">
+                    Jederzeit mit einem Klick, ohne Begründung, ohne Wartezeit. Sie sind zu nichts verpflichtet – weder während des Tests noch danach.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq3">
+                    Sind meine Kundendaten sicher?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq3" role="region">
+                    Ja. Alle Daten werden verschlüsselt übertragen und auf Servern in Deutschland gespeichert. Rexogo ist vollständig DSGVO-konform. Ihre Kundendaten gehören Ihnen – nicht uns.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq4">
+                    Wie lange dauert die Einrichtung?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq4" role="region">
+                    Die meisten Berater sind in unter 30 Minuten startklar – inklusive Kontaktimport. Es gibt keine wochenlange Einführungsphase und keine IT-Unterstützung nötig.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq5">
+                    Brauche ich technisches Wissen?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq5" role="region">
+                    Nein. Wenn Sie ein Smartphone bedienen können, kommen Sie mit Rexogo zurecht. Die Oberfläche ist darauf ausgelegt, dass Berater – keine Technikexperten – damit arbeiten.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" aria-controls="faq6">
+                    Kann ich Rexogo auch unterwegs auf dem Smartphone nutzen?
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="faq-a" id="faq6" role="region">
+                    Ja. Rexogo funktioniert auf dem Smartphone genauso wie am Desktop – kein App-Download nötig. Einfach den Browser öffnen, von überall.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     7. ABSCHLUSS-CTA
+═══════════════════════════════════════════════════ -->
+<section class="final-cta" id="jetzt-starten">
+    <div class="wrap">
+        <h2>Weniger Chaos. Mehr Abschlüsse.</h2>
+        <p class="lead">
+            Starten Sie jetzt mit Rexogo – 14 Tage kostenlos,
+            ohne Risiko, ohne Kreditkartenpflicht.
+        </p>
+
+        <a href="https://buy.stripe.com/aFaeVde0H64u2qFd5g2wU0d"
+           target="_blank" rel="noopener"
+           class="btn btn-white">
+            14 Tage kostenlos testen
+        </a>
+        <span class="microtext microtext-white">Kein Risiko &nbsp;·&nbsp; jederzeit kündbar &nbsp;·&nbsp; in 2 Minuten startklar</span>
+
+        <div class="final-trust">
+            <span>✓ DSGVO-konform</span>
+            <span>✓ Server in Deutschland</span>
+            <span>✓ Kein technisches Vorwissen nötig</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-inner">
+            <a href="#" class="footer-logo">rexogo</a>
+            <ul class="footer-links">
+                <li><a href="/impressum">Impressum</a></li>
+                <li><a href="/datenschutz">Datenschutz</a></li>
+                <li><a href="/agb">AGB</a></li>
+                <li><a href="mailto:hallo@rexogo.de">hallo@rexogo.de</a></li>
+            </ul>
+        </div>
+        <p class="footer-copy">© 2025 Rexogo. Alle Rechte vorbehalten. Made in Germany.</p>
+    </div>
+</footer>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var item   = btn.closest('.faq-item');
+            var isOpen = item.classList.contains('open');
+
+            // close all
+            document.querySelectorAll('.faq-item').forEach(function (i) {
+                i.classList.remove('open');
+                i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            });
+
+            // toggle clicked
+            if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    /* ── Sticky mobile CTA ── */
+    var hero   = document.getElementById('hero');
+    var sticky = document.getElementById('sticky');
+
+    if (!hero || !sticky) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+        var visible = entries[0].isIntersecting;
+        if (window.innerWidth > 768) return;
+        sticky.style.display = visible ? 'none' : 'block';
+    }, { threshold: 0.1 });
+
+    observer.observe(hero);
+
+    // hide initially if hero is above fold on load
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) sticky.style.display = 'none';
+    });
+}());
+</script>
+
+</body>
+</html>
