@@ -1,0 +1,303 @@
+<!-- PARAMY POLYCLINIC — Collagen Skin Booster (Men) — GHL Form Block -->
+<!-- Paste this entire block into a GHL Custom HTML element -->
+<style>
+#pmc-wrap{font-family:'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f5f3ef 0%,#fff 100%);padding:56px 20px;box-sizing:border-box}
+#pmc-wrap *{box-sizing:border-box}
+#pmc-inner{max-width:580px;margin:0 auto}
+#pmc-wrap h2{text-align:center;font-size:clamp(24px,5vw,32px);font-weight:800;color:#111;margin:0 0 8px;line-height:1.2}
+#pmc-wrap h2 em{font-style:italic;color:#0b9494}
+#pmc-wrap .pmc-sub{text-align:center;color:#666;font-size:15px;margin-bottom:32px}
+.pmc-card{background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(11,148,148,.15),0 4px 16px rgba(0,0,0,.06);overflow:hidden}
+.pmc-head{background:linear-gradient(135deg,#0a6e6e 0%,#0b9494 100%);padding:28px 28px 24px;color:#fff;position:relative}
+.pmc-clinic{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+.pmc-head h3{font-size:22px;font-weight:800;margin:0 0 4px}
+.pmc-head h3 em{font-style:italic;color:#c9a961}
+.pmc-desc{font-size:13px;opacity:.85;margin:0 0 18px}
+.pmc-dots{display:flex;gap:6px}
+.pmc-dot{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);transition:background .3s}
+.pmc-dot.active{background:#c9a961}
+.pmc-dot.done{background:rgba(255,255,255,.6)}
+.pmc-body{padding:28px}
+.pmc-step{display:none}
+.pmc-step.active{display:block}
+.pmc-step-lbl{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0b9494;margin-bottom:20px}
+.pmc-field{margin-bottom:16px}
+.pmc-label{display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:6px}
+.pmc-label .req{color:#e12627}
+.pmc-input,.pmc-select{width:100%;padding:13px 14px;border:1.5px solid #d0d0d0;border-radius:8px;font-family:inherit;font-size:16px;color:#111;background:#fff;outline:none;-webkit-appearance:none;transition:border-color .2s}
+.pmc-input:focus,.pmc-select:focus{border-color:#0b9494;box-shadow:0 0 0 3px rgba(11,148,148,.1)}
+.pmc-input.err,.pmc-select.err{border-color:#e12627}
+.pmc-err{display:none;font-size:12px;color:#e12627;margin-top:5px}
+.pmc-field.has-err .pmc-err{display:block}
+.pmc-phone-wrap{position:relative}
+.pmc-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:600;color:#555;pointer-events:none}
+.pmc-phone-wrap .pmc-input{padding-left:52px}
+.pmc-hint{font-size:12px;color:#888;margin-top:5px}
+.pmc-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.pmc-row2{grid-template-columns:1fr}}
+.pmc-nav{display:flex;gap:10px;margin-top:24px}
+.pmc-btn{flex:1;padding:15px;border:none;border-radius:30px;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.pmc-btn-primary{background:linear-gradient(135deg,#0b9494,#0a6e6e);color:#fff}
+.pmc-btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.pmc-btn-secondary{background:#f0efeb;color:#555}
+.pmc-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+/* Packages */
+.pmc-pkg-grid{display:grid;gap:12px}
+.pmc-pkg{border:2px solid #e0ddd5;border-radius:12px;padding:16px;cursor:pointer;position:relative;transition:border-color .2s,background .2s}
+.pmc-pkg:hover{border-color:#0b9494}
+.pmc-pkg input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.pmc-pkg.sel{border-color:#0b9494;background:rgba(11,148,148,.04)}
+.pmc-pkg-check{width:20px;height:20px;border-radius:50%;border:2px solid #ccc;position:absolute;top:16px;right:16px;transition:all .2s}
+.pmc-pkg.sel .pmc-pkg-check{background:#0b9494;border-color:#0b9494}
+.pmc-pkg.sel .pmc-pkg-check::after{content:'';display:block;width:6px;height:6px;background:#fff;border-radius:50%;margin:5px auto}
+.pmc-pkg-name{font-size:14px;font-weight:700;color:#111;padding-right:30px;margin-bottom:6px}
+.pmc-pkg-price{font-size:20px;font-weight:800;color:#0b9494}
+.pmc-pkg-old{font-size:13px;color:#999;text-decoration:line-through;margin-left:8px;font-weight:400}
+.pmc-pkg-tabby{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:#666}
+.pmc-tabby-logo{background:#3ddc84;color:#000;font-weight:900;font-size:11px;padding:2px 6px;border-radius:3px;letter-spacing:.02em}
+.pmc-pkg-err{display:none;background:#fff0f0;border:1px solid #fcc;border-radius:6px;padding:10px;font-size:13px;color:#e12627;margin-top:12px;text-align:center}
+.pmc-pkg-err.show{display:block}
+/* Spinner */
+.pmc-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:pmc-spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes pmc-spin{to{transform:rotate(360deg)}}
+/* Submit error */
+.pmc-submit-err{display:none;background:#fff0f0;border:1px solid #fcc;border-radius:8px;padding:12px;font-size:13px;color:#e12627;margin-top:14px;text-align:center}
+.pmc-submit-err.show{display:block}
+/* Success */
+.pmc-success{display:none;text-align:center;padding:40px 20px}
+.pmc-success.show{display:block}
+.pmc-success-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0b9494,#0a6e6e);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 30px rgba(11,148,148,.3)}
+.pmc-success-icon svg{width:32px;height:32px}
+.pmc-success h4{font-size:26px;font-weight:800;color:#111;margin-bottom:10px}
+.pmc-success p{font-size:15px;color:#555;line-height:1.7}
+.pmc-success .pmc-hl{color:#0b9494;font-weight:700}
+/* Phone CTA below form */
+.pmc-phone-cta{text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid #f0efeb;font-size:14px;color:#666}
+.pmc-phone-cta a{color:#0b9494;font-weight:700;text-decoration:none}
+</style>
+
+<div id="pmc-wrap">
+  <div id="pmc-inner">
+    <h2>Book Your Free <em>Consultation</em></h2>
+    <p class="pmc-sub">Luxury Collagen Skin Booster for Men · Dubai · DHA Licensed</p>
+    <div class="pmc-card">
+      <div class="pmc-head">
+        <div class="pmc-clinic">Paramy Polyclinic · Dubai · DHA Licensed</div>
+        <h3>Book Your <em>Skin Booster</em></h3>
+        <p class="pmc-desc">Tighten · Define · Brighten · Restore — 4-in-1 Collagen Protocol</p>
+        <div class="pmc-dots">
+          <div class="pmc-dot active" id="pmc-dot0"></div>
+          <div class="pmc-dot" id="pmc-dot1"></div>
+        </div>
+      </div>
+      <div class="pmc-body">
+        <form id="pmc-form" novalidate>
+          <!-- Step 1 -->
+          <div class="pmc-step active" id="pmc-step1">
+            <div class="pmc-step-lbl">Step 1 of 2 — Personal Details</div>
+            <div class="pmc-field" id="pf-name">
+              <label class="pmc-label">Full Name <span class="req">*</span></label>
+              <input class="pmc-input" type="text" name="Name" placeholder="e.g. Ahmed Al Mansouri" autocomplete="name"/>
+              <div class="pmc-err">Please enter your full name.</div>
+            </div>
+            <div class="pmc-field" id="pf-email">
+              <label class="pmc-label">Email Address <span class="req">*</span></label>
+              <input class="pmc-input" type="email" name="Email" placeholder="you@example.com" autocomplete="email"/>
+              <div class="pmc-err">Please enter a valid email address.</div>
+            </div>
+            <div class="pmc-field" id="pf-phone">
+              <label class="pmc-label">WhatsApp Number <span class="req">*</span></label>
+              <div class="pmc-phone-wrap">
+                <span class="pmc-prefix">+971</span>
+                <input class="pmc-input" type="tel" name="WhatsApp Number" placeholder="50 000 0000" inputmode="numeric"/>
+              </div>
+              <div class="pmc-hint">UAE number — we'll reach out via WhatsApp.</div>
+              <div class="pmc-err">Please enter a valid UAE number (9 digits).</div>
+            </div>
+            <div class="pmc-row2">
+              <div class="pmc-field" id="pf-gender">
+                <label class="pmc-label">Gender <span class="req">*</span></label>
+                <select class="pmc-select" name="Gender">
+                  <option value="">Select…</option>
+                  <option>Male</option><option>Female</option><option>Prefer not to say</option>
+                </select>
+                <div class="pmc-err">Please select a gender.</div>
+              </div>
+              <div class="pmc-field" id="pf-age">
+                <label class="pmc-label">Age Range <span class="req">*</span></label>
+                <select class="pmc-select" name="Age">
+                  <option value="">Select…</option>
+                  <option>30 – 39</option><option>40 – 49</option><option>50 – 60</option><option>Other</option>
+                </select>
+                <div class="pmc-err">Please select an age range.</div>
+              </div>
+            </div>
+            <div class="pmc-nav">
+              <button type="button" class="pmc-btn pmc-btn-primary" id="pmc-next">Continue →</button>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="pmc-step" id="pmc-step2">
+            <div class="pmc-step-lbl">Step 2 of 2 — Choose Your Package</div>
+            <div class="pmc-pkg-grid">
+              <label class="pmc-pkg" id="pp0">
+                <input type="radio" name="Package" value="Single Session – Tighten & Define (AED 1,150)"/>
+                <div class="pmc-pkg-check"></div>
+                <div class="pmc-pkg-name">💎 Single Session — Tighten &amp; Define</div>
+                <div><span class="pmc-pkg-price">AED 1,150</span><span class="pmc-pkg-old">AED 2,300</span></div>
+                <div class="pmc-pkg-tabby"><span class="pmc-tabby-logo">tabby</span> AED 287.50/mo × 4 · No interest</div>
+                <div style="font-size:12px;color:#666;margin-top:6px">1 session · 3-Layer Cellular Boost · Full-face coverage</div>
+              </label>
+              <label class="pmc-pkg" id="pp1">
+                <input type="radio" name="Package" value="Triple Power Pack – 3 Sessions (AED 2,750)"/>
+                <div class="pmc-pkg-check"></div>
+                <div class="pmc-pkg-name">🏆 Triple Power Pack — 3 Sessions</div>
+                <div><span class="pmc-pkg-price">AED 2,750</span><span class="pmc-pkg-old">AED 6,900</span></div>
+                <div class="pmc-pkg-tabby"><span class="pmc-tabby-logo">tabby</span> AED 687.50/mo × 4 · No interest</div>
+                <div style="font-size:12px;color:#666;margin-top:6px">3 sessions · Best results · 60% off</div>
+              </label>
+              <label class="pmc-pkg" id="pp2">
+                <input type="radio" name="Package" value="Signature Skin Programme – 5 Sessions (AED 4,250)"/>
+                <div class="pmc-pkg-check"></div>
+                <div class="pmc-pkg-name">⭐ Signature Skin Programme — 5 Sessions</div>
+                <div><span class="pmc-pkg-price">AED 4,250</span><span class="pmc-pkg-old">AED 11,500</span></div>
+                <div class="pmc-pkg-tabby"><span class="pmc-tabby-logo">tabby</span> AED 1,062.50/mo × 4 · No interest</div>
+                <div style="font-size:12px;color:#666;margin-top:6px">5 sessions · Maximum transformation · 63% off</div>
+              </label>
+            </div>
+            <div class="pmc-pkg-err" id="pmc-pkg-err">Please select a package to continue.</div>
+            <div class="pmc-nav">
+              <button type="button" class="pmc-btn pmc-btn-secondary" id="pmc-back">← Back</button>
+              <button type="submit" class="pmc-btn pmc-btn-primary" id="pmc-submit">Book Consultation</button>
+            </div>
+            <div class="pmc-submit-err" id="pmc-submit-err">Something went wrong. Please try again or call us.</div>
+          </div>
+        </form>
+        <!-- Success -->
+        <div class="pmc-success" id="pmc-success">
+          <div class="pmc-success-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M6 16l7 7L26 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Consultation Booked!</h4>
+          <p>Thank you! Our team at <span class="pmc-hl">Paramy Polyclinic</span> will contact you on WhatsApp within <span class="pmc-hl">2 hours</span> to confirm your appointment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pmc-phone-cta">
+      Prefer to call? <a href="tel:+971502646912">+971 50 264 6912</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT='https://services.leadconnectorhq.com/hooks/NHIVLrmJSojoBmDZPBGo/webhook-trigger/03b1b019-e774-49fc-82b8-8897b44e7de9';
+  var step=0;
+  function init(){
+    var form=document.getElementById('pmc-form');
+    var s1=document.getElementById('pmc-step1');
+    var s2=document.getElementById('pmc-step2');
+    var success=document.getElementById('pmc-success');
+    var dot0=document.getElementById('pmc-dot0');
+    var dot1=document.getElementById('pmc-dot1');
+    if(!form||!s1||!s2)return;
+
+    function setDots(n){
+      dot0.className='pmc-dot'+(n===0?' active':' done');
+      dot1.className='pmc-dot'+(n===1?' active':'');
+    }
+    function goTo(n){
+      s1.className='pmc-step'+(n===0?' active':'');
+      s2.className='pmc-step'+(n===1?' active':'');
+      step=n;
+      setDots(n);
+      var wrap=document.getElementById('pmc-wrap');
+      if(wrap)wrap.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Package selection
+    document.querySelectorAll('.pmc-pkg').forEach(function(c){
+      c.addEventListener('click',function(){
+        document.querySelectorAll('.pmc-pkg').forEach(function(x){x.classList.remove('sel')});
+        c.classList.add('sel');
+        c.querySelector('input[type=radio]').checked=true;
+        document.getElementById('pmc-pkg-err').classList.remove('show');
+      });
+    });
+
+    // Phone formatter
+    var phoneEl=form.querySelector('input[name="WhatsApp Number"]');
+    phoneEl.addEventListener('input',function(){
+      var v=phoneEl.value.replace(/[^0-9]/g,'');
+      if(v.length>9)v=v.slice(0,9);
+      phoneEl.value=v.replace(/([0-9]{2})([0-9]{3})([0-9]{0,4})/,function(_,a,b,c){return c?a+' '+b+' '+c:(b?a+' '+b:a);});
+    });
+
+    function setErr(id,msg){
+      var el=document.getElementById(id);if(!el)return;
+      el.classList.add('has-err');
+      var i=el.querySelector('.pmc-input,.pmc-select');if(i)i.classList.add('err');
+    }
+    function clrErr(id){
+      var el=document.getElementById(id);if(!el)return;
+      el.classList.remove('has-err');
+      var i=el.querySelector('.pmc-input,.pmc-select');if(i)i.classList.remove('err');
+    }
+
+    function validateStep1(){
+      var ok=true;
+      var name=form.querySelector('[name=Name]').value.trim();
+      var email=form.querySelector('[name=Email]').value.trim();
+      var phone=phoneEl.value.replace(/[^0-9]/g,'');
+      var gender=form.querySelector('[name=Gender]').value;
+      var age=form.querySelector('[name=Age]').value;
+      if(!name){setErr('pf-name');ok=false;}else clrErr('pf-name');
+      if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setErr('pf-email');ok=false;}else clrErr('pf-email');
+      if(!phone||phone.length<9){setErr('pf-phone');ok=false;}else clrErr('pf-phone');
+      if(!gender){setErr('pf-gender');ok=false;}else clrErr('pf-gender');
+      if(!age){setErr('pf-age');ok=false;}else clrErr('pf-age');
+      return ok;
+    }
+
+    document.getElementById('pmc-next').addEventListener('click',function(){if(validateStep1())goTo(1);});
+    document.getElementById('pmc-back').addEventListener('click',function(){goTo(0);});
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var sel=form.querySelector('[name=Package]:checked');
+      if(!sel){document.getElementById('pmc-pkg-err').classList.add('show');return;}
+      var btn=document.getElementById('pmc-submit');
+      var eb=document.getElementById('pmc-submit-err');
+      eb.classList.remove('show');
+      btn.disabled=true;
+      btn.innerHTML='<span class="pmc-spinner"></span>Sending…';
+      var ph=phoneEl.value.replace(/\s/g,'');
+      fetch(ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          Name:form.querySelector('[name=Name]').value.trim(),
+          Email:form.querySelector('[name=Email]').value.trim(),
+          'WhatsApp Number':'+971'+ph,
+          Gender:form.querySelector('[name=Gender]').value,
+          Age:form.querySelector('[name=Age]').value,
+          Package:sel.value,
+          Source:'Collagen Skin Booster — Men Landing Page'
+        })
+      })
+      .then(function(r){
+        if(!r.ok)throw new Error('err');
+        if(typeof fbq==='function')fbq('track','Lead');
+        form.style.display='none';
+        success.classList.add('show');
+      })
+      .catch(function(){
+        btn.disabled=false;
+        btn.textContent='Book Consultation';
+        eb.classList.add('show');
+      });
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
