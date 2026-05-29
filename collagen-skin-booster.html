@@ -1427,6 +1427,7 @@ a{text-decoration:none;color:inherit}
     })
     .then(function(r){
       if(!r.ok) throw new Error('Network error');
+      fbq('track', 'Lead');
       form.style.display = 'none';
       success.classList.add('visible');
     })
