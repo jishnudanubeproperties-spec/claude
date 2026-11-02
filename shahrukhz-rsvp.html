@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP | Shahrukhz Residences by Danube | 11th November</title>
+  <meta name="description" content="Register your RSVP for the exclusive launch event of Shahrukhz Residences by Danube at Coca-Cola Arena, 11th November at 6:30 PM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean: #0A3D6B;
+      --ocean-deep: #061E38;
+      --ocean-mid: #0D4F8C;
+      --ocean-light: #1A6BAF;
+      --ocean-bright: #2196D8;
+      --white: #FFFFFF;
+      --off-white: #EBF4FB;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dark: #A07830;
+      --text-muted: #7BA8C8;
+      --wave: rgba(33,150,216,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--ocean-deep);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── WAVE CANVAS ── */
+    #wave-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .page-wrapper { position: relative; z-index: 1; }
+
+    /* ══════════════════ HERO ══════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      padding: 0 6vw;
+      background:
+        radial-gradient(ellipse 70% 80% at 10% 50%, rgba(6,30,56,0.98) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 100% at 90% 30%, rgba(10,61,107,0.7) 0%, transparent 60%),
+        linear-gradient(160deg, #061E38 0%, #0A3D6B 40%, #061E38 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle ocean shimmer overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cpath d='M0 40 Q20 30 40 40 Q60 50 80 40' stroke='%232196D8' stroke-width='0.5' opacity='0.1'/%3E%3Cpath d='M0 60 Q20 50 40 60 Q60 70 80 60' stroke='%232196D8' stroke-width='0.5' opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .hero-left {
+      padding: 80px 40px 80px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .top-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 8px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-by {
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 6px;
+    }
+
+    .brand-danube {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      display: block;
+    }
+
+    .tagline-wrap {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .tagline-small {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .tagline-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .tagline-big strong {
+      font-style: normal;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .event-detail-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .detail-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(33,150,216,0.1);
+      border: 1px solid rgba(33,150,216,0.3);
+      border-radius: 40px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--off-white);
+      backdrop-filter: blur(8px);
+    }
+
+    .detail-pill .icon { font-size: 1rem; }
+
+    .dress-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 6px;
+      width: fit-content;
+    }
+
+    .dress-badge-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .dress-badge-value {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 480px;
+    }
+
+    /* ── RIGHT COLUMN – FORM ── */
+    .hero-right {
+      padding: 80px 0 80px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(33,150,216,0.2);
+      border-radius: 16px;
+      padding: 44px 40px;
+      width: 100%;
+      max-width: 470px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--ocean-bright), var(--gold), var(--ocean-bright), transparent);
+    }
+
+    .form-card::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(33,150,216,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .form-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .form-subheading {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+
+    .seats-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 6px;
+      margin-bottom: 26px;
+    }
+
+    .seats-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #E8734A;
+      animation: blink 1.5s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .seats-text {
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FORM FIELDS ── */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    .form-group label .req {
+      color: var(--gold);
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.87rem;
+      color: var(--white);
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237BA8C8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: rgba(255,255,255,0.05);
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: #0A3D6B;
+      color: var(--white);
+    }
+
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--ocean-bright);
+      background: rgba(33,150,216,0.08);
+      box-shadow: 0 0 0 3px rgba(33,150,216,0.15);
+    }
+
+    .form-group input.error { border-color: #e05c5c; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .phone-wrap { display: flex; }
+
+    .phone-code {
+      width: 88px;
+      flex-shrink: 0;
+      border-radius: 8px 0 0 8px !important;
+      border-right: none !important;
+      font-size: 0.8rem !important;
+    }
+
+    .phone-num {
+      flex: 1;
+      border-radius: 0 8px 8px 0 !important;
+    }
+
+    .rm-field-wrap {
+      position: relative;
+    }
+
+    .rm-field-wrap .rm-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .rm-field-wrap input {
+      padding-left: 40px;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0 16px;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .section-divider-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .privacy-note {
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 2px;
+      margin-bottom: 20px;
+    }
+
+    .btn-rsvp {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-bright) 100%);
+      border: 1px solid rgba(33,150,216,0.5);
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-rsvp::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-rsvp:hover::before { left: 100%; }
+
+    .btn-rsvp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(33,150,216,0.4);
+    }
+
+    .btn-rsvp:active { transform: translateY(0); }
+
+    .btn-rsvp:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .success-ring {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ocean-mid), var(--ocean-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 2.2rem;
+      position: relative;
+      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+
+    .success-ring::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(33,150,216,0.3);
+      animation: ringPulse 2s ease-out infinite;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes ringPulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .success-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .confirmation-card {
+      background: rgba(33,150,216,0.08);
+      border: 1px solid rgba(33,150,216,0.2);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .conf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      font-size: 0.79rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .conf-row:last-child { border-bottom: none; }
+    .conf-row span:first-child { color: var(--text-muted); }
+    .conf-row span:last-child { font-weight: 600; color: var(--off-white); }
+
+    /* ══════════════════ STRIPS ══════════════════ */
+    .evening-strip {
+      padding: 48px 6vw;
+      background: linear-gradient(135deg, rgba(10,61,107,0.6) 0%, rgba(6,30,56,0.8) 100%);
+      border-top: 1px solid rgba(33,150,216,0.15);
+      border-bottom: 1px solid rgba(33,150,216,0.15);
+    }
+
+    .strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .strip-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: rgba(33,150,216,0.15);
+      border: 1px solid rgba(33,150,216,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .strip-item-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+
+    .strip-item-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════ FOOTER ══════════════════ */
+    footer {
+      padding: 28px 6vw;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-sub {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-right {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ══════════════════ RESPONSIVE ══════════════════ */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 6vw;
+      }
+      .hero-left { padding: 0 0 40px 0; }
+      .hero-right { padding: 0; }
+      .form-card { padding: 32px 22px; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-right { text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+      .event-detail-row { flex-direction: column; }
+    }
+
+    /* ══════════════════ SCROLL FADE ══════════════════ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<canvas id="wave-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+
+      <div class="top-label">You Are Cordially Invited &nbsp;·&nbsp; Exclusive Launch Event</div>
+
+      <div>
+        <div class="brand-name">Shahrukhz<br/>Residences</div>
+        <span class="brand-by">by</span>
+        <span class="brand-danube">DANUBE</span>
+      </div>
+
+      <div class="tagline-wrap">
+        <div class="tagline-small">Live Life</div>
+        <div class="tagline-big"><strong>King</strong> Style</div>
+      </div>
+
+      <div class="event-detail-row">
+        <div class="detail-pill">
+          <span class="icon">📅</span>
+          <span>11<sup>th</sup> November</span>
+        </div>
+        <div class="detail-pill">
+          <span class="icon">📍</span>
+          <span>Coca-Cola Arena</span>
+        </div>
+        <div class="detail-pill">
+          <span class="icon">⏰</span>
+          <span>6:30 PM</span>
+        </div>
+      </div>
+
+      <div class="dress-badge">
+        <span style="font-size:1.3rem;">✨</span>
+        <div>
+          <span class="dress-badge-label">Dress Code</span>
+          <span class="dress-badge-value">Glitz &amp; Glamour</span>
+        </div>
+      </div>
+
+      <p class="hero-desc">
+        Join us for an unforgettable evening as we unveil a new chapter with the King himself.
+        An evening of luxury, vision, and the future of Dubai living — <em>invitation only</em>.
+      </p>
+
+    </div>
+
+    <!-- RIGHT – FORM -->
+    <div class="hero-right">
+      <div class="form-card">
+
+        <!-- FORM VIEW -->
+        <div id="form-view">
+          <h2 class="form-heading">Register<br/><span style="color:var(--ocean-bright)">Your RSVP</span></h2>
+          <p class="form-subheading">Seats are strictly limited · Invitation only event</p>
+
+          <div class="seats-row">
+            <div class="seats-dot"></div>
+            <span class="seats-text">Limited seats remaining — confirm your spot now</span>
+          </div>
+
+          <form id="rsvp-form" novalidate>
+
+            <!-- PERSONAL INFO -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name<span class="req">*</span></label>
+                <input type="text" id="fname" name="fname" placeholder="First name" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name<span class="req">*</span></label>
+                <input type="text" id="lname" name="lname" placeholder="Last name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address<span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">WhatsApp / Phone<span class="req">*</span></label>
+              <div class="phone-wrap">
+                <select name="phone_code" class="phone-code" aria-label="Country code">
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+60">🇲🇾 +60</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+974">🇶🇦 +974</option>
+                  <option value="+973">🇧🇭 +973</option>
+                  <option value="+968">🇴🇲 +968</option>
+                  <option value="+965">🇰🇼 +965</option>
+                  <option value="+7">🇷🇺 +7</option>
+                  <option value="+86">🇨🇳 +86</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+61">🇦🇺 +61</option>
+                </select>
+                <input type="tel" id="phone" name="phone" class="phone-num" placeholder="50 123 4567" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="country">Country<span class="req">*</span></label>
+                <select id="country" name="country" required>
+                  <option value="" disabled selected>Select</option>
+                  <option>UAE</option>
+                  <option>India</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option>Singapore</option>
+                  <option>Malaysia</option>
+                  <option>Saudi Arabia</option>
+                  <option>Qatar</option>
+                  <option>Bahrain</option>
+                  <option>Oman</option>
+                  <option>Kuwait</option>
+                  <option>Russia</option>
+                  <option>China</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                  <option>Australia</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="guests">No. of Guests<span class="req">*</span></label>
+                <select id="guests" name="guests" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 — Just me</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- BROKER / RM SECTION -->
+            <div class="section-divider">
+              <span class="section-divider-label">Broker / RM Details</span>
+            </div>
+
+            <div class="form-group">
+              <label for="rm_name">Your RM Name<span class="req">*</span></label>
+              <div class="rm-field-wrap">
+                <span class="rm-icon">👤</span>
+                <input type="text" id="rm_name" name="rm_name" placeholder="Relationship Manager's full name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="broker_company">Brokerage / Company</label>
+              <input type="text" id="broker_company" name="broker_company" placeholder="Company or agency name (optional)" />
+            </div>
+
+            <p class="privacy-note">
+              Your information is confidential and will only be used for event coordination. By registering you agree to receive event updates from Danube Properties.
+            </p>
+
+            <button type="submit" class="btn-rsvp" id="submit-btn">
+              Confirm My RSVP →
+            </button>
+
+            <div class="secure-note">
+              🔒 &nbsp;Secure registration &nbsp;·&nbsp; Invitation only &nbsp;·&nbsp; No spam
+            </div>
+          </form>
+        </div>
+
+        <!-- SUCCESS VIEW -->
+        <div class="success-state" id="success-view">
+          <div class="success-ring">🎉</div>
+          <h3 class="success-title">You're <span style="color:var(--ocean-bright)">Confirmed!</span></h3>
+          <p class="success-sub">
+            Your RSVP is registered. Check your inbox for a confirmation.<br/>
+            We look forward to welcoming you on <strong>11th November</strong>.
+          </p>
+          <div class="confirmation-card">
+            <div class="conf-row"><span>Event</span><span>Shahrukhz Residences Launch</span></div>
+            <div class="conf-row"><span>Date</span><span>11th November</span></div>
+            <div class="conf-row"><span>Venue</span><span>Coca-Cola Arena, Dubai</span></div>
+            <div class="conf-row"><span>Time</span><span>6:30 PM</span></div>
+            <div class="conf-row"><span>Dress Code</span><span>Glitz &amp; Glamour ✨</span></div>
+            <div class="conf-row" id="conf-rm-row"><span>RM</span><span id="conf-rm-name">—</span></div>
+          </div>
+          <p style="font-size:0.72rem;color:var(--text-muted);margin-top:18px;line-height:1.6;">
+            Your RM will be in touch with further details.<br/>See you at the Arena for a night that redefines luxury. 👑
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EVENING HIGHLIGHTS ═══════════ -->
+  <div class="evening-strip fade-in">
+    <div class="strip-inner">
+      <div class="strip-item">
+        <div class="strip-icon-wrap">🎤</div>
+        <div>
+          <div class="strip-item-title">Grand Unveiling</div>
+          <div class="strip-item-desc">Be first to witness the official launch of Shahrukhz Residences — a landmark moment in Dubai real estate.</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon-wrap">🥂</div>
+        <div>
+          <div class="strip-item-title">Gala Evening</div>
+          <div class="strip-item-desc">An unforgettable evening of entertainment, networking, and celebration at the iconic Coca-Cola Arena.</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon-wrap">👑</div>
+        <div>
+          <div class="strip-item-title">With The King</div>
+          <div class="strip-item-desc">A once-in-a-lifetime opportunity to be in the same room as a true icon of global cinema and culture.</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon-wrap">🏙️</div>
+        <div>
+          <div class="strip-item-title">Investment Insights</div>
+          <div class="strip-item-desc">Exclusive first-look at Danube's most celebrated project — pricing, unit plans, and payment structures.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="fade-in">
+    <div>
+      <div class="footer-brand">DANUBE <span style="color:var(--ocean-bright)">PROPERTIES</span></div>
+      <div class="footer-sub">Shahrukhz Residences — Launch Event 2025</div>
+    </div>
+    <div class="footer-right">
+      An invitation-only event. Seats are strictly limited.<br/>
+      © 2025 Danube Properties. All rights reserved.
+    </div>
+  </footer>
+
+</div><!-- /page-wrapper -->
+
+<script>
+/* ── WAVE PARTICLES ── */
+(function() {
+  const canvas = document.getElementById('wave-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, t = 0;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.008;
+
+    // Draw multiple wave layers
+    [
+      { amp: 30, freq: 0.008, y: H * 0.35, alpha: 0.06, phase: 0 },
+      { amp: 20, freq: 0.012, y: H * 0.55, alpha: 0.05, phase: 1.2 },
+      { amp: 40, freq: 0.006, y: H * 0.72, alpha: 0.04, phase: 2.5 },
+    ].forEach(wave => {
+      ctx.beginPath();
+      ctx.moveTo(0, wave.y);
+      for (let x = 0; x <= W; x += 4) {
+        const y = wave.y + Math.sin(x * wave.freq + t + wave.phase) * wave.amp;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+      ctx.fillStyle = `rgba(33,150,216,${wave.alpha})`;
+      ctx.fill();
+    });
+
+    // Floating particles
+    ctx.fillStyle = 'rgba(33,150,216,0.15)';
+    for (let i = 0; i < 60; i++) {
+      const x = ((i * 137.5 + t * 10) % W);
+      const y = ((i * 97.3 + Math.sin(t + i) * 30) % H);
+      const r = (Math.sin(t * 0.5 + i) + 1) * 1.5 + 0.5;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── FORM SUBMIT ── */
+document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const required = this.querySelectorAll('[required]');
+  let valid = true;
+
+  required.forEach(field => {
+    field.classList.remove('error');
+    if (!field.value.trim()) {
+      field.classList.add('error');
+      valid = false;
+    }
+  });
+
+  // Basic email check
+  const emailField = document.getElementById('email');
+  if (emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+    emailField.classList.add('error');
+    valid = false;
+  }
+
+  if (!valid) {
+    const firstError = this.querySelector('.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Confirming...';
+  btn.disabled = true;
+
+  // Capture RM name for success card
+  const rmName = document.getElementById('rm_name').value.trim();
+
+  setTimeout(() => {
+    document.getElementById('form-view').style.display = 'none';
+    const sv = document.getElementById('success-view');
+    sv.style.display = 'block';
+    if (rmName) {
+      document.getElementById('conf-rm-name').textContent = rmName;
+    } else {
+      document.getElementById('conf-rm-row').style.display = 'none';
+    }
+  }, 1400);
+});
+
+/* ── SCROLL ANIMATIONS ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
